@@ -24,25 +24,25 @@ export function Earth(props) {
     earthRef.current.rotation.y = elapsedTime / 6;
     cloudsRef.current.rotation.y = elapsedTime / 6;
 
- props.group.current.rotation.y += Math.PI / 500
-//props.group.current.rotation.y += 0.001;
+    props.group.current.rotation.y += Math.PI / 500
+    //props.group.current.rotation.y += 0.001;
 
   });
 
   return (
     <>
-      <pointLight color="#fffcf5" position={[5, 0, 5]} intensity={2.2} castShadow shadow-mapSize={[512, 512]}/>
-      
+      <pointLight color="#fffcf5" position={[5, 0, 5]} intensity={2.2} castShadow shadow-mapSize={[512, 512]} />
+
       <Stars
         radius={300}
         depth={60}
-        count={20000}
+        count={7000}
         factor={9}
         saturation={0}
         fade={true}
       />
-       
-  
+
+
 
       <mesh ref={cloudsRef} position={[0, 0, 0]}>
         <sphereGeometry args={[1.005, 32, 32]} />
@@ -64,10 +64,11 @@ export function Earth(props) {
           normalMap={normalMap}
           metalness={0.4}
           roughness={0.7}
+          bumpScale={1}
         />
 
 
-      {/* 
+        {/* 
       <OrbitControls
           enableZoom={true}
           enablePan={true}

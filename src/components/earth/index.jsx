@@ -23,11 +23,16 @@ export function Earth(props) {
 
     earthRef.current.rotation.y = elapsedTime / 6;
     cloudsRef.current.rotation.y = elapsedTime / 6;
+
+// props.group.current.rotation.y += Math.PI / 500
+props.group.current.rotation.y += Math.PI / 1000
+
   });
 
   return (
     <>
-      <pointLight color="#f6f3ea" position={[2, 0, 5]} intensity={2.2} />
+      <pointLight color="#f6f3ea" position={[5, 0, 5]} intensity={2.2} />
+      
       <Stars
         radius={300}
         depth={60}
@@ -36,7 +41,10 @@ export function Earth(props) {
         saturation={0}
         fade={true}
       />
-      <mesh ref={cloudsRef} position={[0, 0, 2]}>
+       
+  
+
+      <mesh ref={cloudsRef} position={[0, 0, 0]}>
         <sphereGeometry args={[1.005, 32, 32]} />
         <meshPhongMaterial
           map={cloudsMap}
@@ -46,7 +54,9 @@ export function Earth(props) {
           side={THREE.DoubleSide}
         />
       </mesh>
-      <mesh ref={earthRef} position={[0, 0, 2]}>
+
+
+      <mesh ref={earthRef} position={[0, 0, 0]}>
         <sphereGeometry args={[1, 32, 32]} />
         <meshPhongMaterial specularMap={specularMap} />
         <meshStandardMaterial

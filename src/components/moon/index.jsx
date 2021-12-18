@@ -24,7 +24,7 @@ export function Moon(props) {
   return (
     <>
 
-      <mesh ref={moonRef} position={[3, 0, 0]}>
+      <mesh ref={moonRef} position={[3, 0, 0]} castShadow receiveShadow>
         <sphereGeometry args={[0.27, 32, 32]} />
         <meshPhongMaterial specularMap={specularMap} />
         <meshStandardMaterial

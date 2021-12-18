@@ -21,10 +21,10 @@ function App() {
 
   return (
     <CanvasContainer>
-      {/* 
+      
      <TopSection /> 
-     */}
-      <Canvas>
+     
+      <Canvas shadows>
         <Suspense fallback={null}>
 
           <Earth group = {group}/>

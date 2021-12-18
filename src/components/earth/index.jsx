@@ -31,7 +31,7 @@ export function Earth(props) {
 
   return (
     <>
-      <pointLight color="#f6f3ea" position={[5, 0, 5]} intensity={2.2} />
+      <pointLight color="#fffcf5" position={[5, 0, 5]} intensity={2.2} castShadow shadow-mapSize={[512, 512]}/>
       
       <Stars
         radius={300}
@@ -56,7 +56,7 @@ export function Earth(props) {
       </mesh>
 
 
-      <mesh ref={earthRef} position={[0, 0, 0]}>
+      <mesh ref={earthRef} position={[0, 0, 0]} castShadow receiveShadow>
         <sphereGeometry args={[1, 32, 32]} />
         <meshPhongMaterial specularMap={specularMap} />
         <meshStandardMaterial
@@ -65,6 +65,9 @@ export function Earth(props) {
           metalness={0.4}
           roughness={0.7}
         />
+
+
+      {/* 
       <OrbitControls
           enableZoom={true}
           enablePan={true}
@@ -73,6 +76,9 @@ export function Earth(props) {
           panSpeed={0.5}
           rotateSpeed={0.4}
         /> 
+*/}
+
+
       </mesh>
     </>
   );

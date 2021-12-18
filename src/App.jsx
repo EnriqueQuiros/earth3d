@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import "./App.css";
 import styled from "styled-components";
 import { Canvas } from "@react-three/fiber";
@@ -17,33 +17,29 @@ const CanvasContainer = styled.div`
 
 function App() {
 
+
+  const [realMode, setRealMode] = useState(false);
+
+
+
   const group = useRef()
 
   return (
     <CanvasContainer>
-      
-     <TopSection /> 
-     
+      <TopSection realMode={realMode} setRealMode={setRealMode} />
+
+
       <Canvas shadows>
         <Suspense fallback={null}>
 
-          <Earth group = {group}/>
-        <group ref={group}>
-          <Moon  />
+          <Earth group={group}  realMode={realMode}/>
+          <group ref={group}>
+            <Moon realMode={realMode} />
           </group>
 
-
           <EffectComposer multisampling={8}>
-
-      {/* 
-<Bloom kernelSize={3} luminanceThreshold={0} luminanceSmoothing={0.4} intensity={0.6} />
-*/}
-
-
-          <Bloom kernelSize={KernelSize.LARGE} luminanceThreshold={0.3}  luminanceSmoothing={0.5} intensity={0.3} />
-        </EffectComposer>
-
-
+            <Bloom kernelSize={KernelSize.LARGE} luminanceThreshold={0.3} luminanceSmoothing={0.5} intensity={0.3} />
+          </EffectComposer>
 
         </Suspense>
       </Canvas>

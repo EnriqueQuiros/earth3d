@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { useFrame, useLoader } from "@react-three/fiber";
-import { OrbitControls, Stars } from "@react-three/drei";
+import { Stars } from "@react-three/drei";
 import * as THREE from "three";
 
 import EarthDayMap from "../../assets/textures/8k_earth_daymap.jpg";
@@ -8,6 +8,7 @@ import EarthNormalMap from "../../assets/textures/8k_earth_normal_map.jpg";
 import EarthSpecularMap from "../../assets/textures/8k_earth_specular_map.jpg";
 import EarthCloudsMap from "../../assets/textures/8k_earth_clouds.png";
 import { TextureLoader } from "three";
+import gsap from "gsap";
 
 export function Earth(props) {
   const [colorMap, normalMap, specularMap, cloudsMap] = useLoader(
@@ -18,14 +19,23 @@ export function Earth(props) {
   const earthRef = useRef();
   const cloudsRef = useRef();
 
-  useFrame(({ clock }) => {
+  useFrame(({ clock, camera }) => {
     const elapsedTime = clock.getElapsedTime();
 
-    earthRef.current.rotation.y = elapsedTime / 6;
-    cloudsRef.current.rotation.y = elapsedTime / 6;
+    earthRef.current.rotation.y = elapsedTime / 1;
+    cloudsRef.current.rotation.y = elapsedTime / 1;
 
-    props.group.current.rotation.y += Math.PI / 500
-    //props.group.current.rotation.y += 0.001;
+    props.group.current.rotation.y += Math.PI / 2500
+
+
+  //  if(!gsap.isTweening(camera.position)) {
+      gsap.to(camera.position, {
+        duration: 0.7,
+        z: props.realMode ? 50: 5,
+        ease: "Power3.inOut",
+      })
+   // }
+
 
   });
 
@@ -36,13 +46,11 @@ export function Earth(props) {
       <Stars
         radius={300}
         depth={60}
-        count={7000}
-        factor={9}
+        count={3000}
+        factor={5}
         saturation={0}
         fade={true}
       />
-
-
 
       <mesh ref={cloudsRef} position={[0, 0, 0]}>
         <sphereGeometry args={[1.005, 32, 32]} />
@@ -68,7 +76,7 @@ export function Earth(props) {
         />
 
 
-        {/* 
+ {/* 
       <OrbitControls
           enableZoom={true}
           enablePan={true}
@@ -77,7 +85,7 @@ export function Earth(props) {
           panSpeed={0.5}
           rotateSpeed={0.4}
         /> 
-*/}
+ */}       
 
 
       </mesh>

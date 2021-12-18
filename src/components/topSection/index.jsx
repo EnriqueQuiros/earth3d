@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react/cjs/react.development";
 import styled from "styled-components";
 
 const TopSectionContainer = styled.div`
@@ -30,11 +31,46 @@ const Slogan = styled.h4`
 `;
 
 
-export function TopSection() {
+const DonateButton = styled.button`
+  outline: none;
+  border: none;
+  background-color: #10366e;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 8px;
+  padding: 10px 2em;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 350ms ease-in-out;
+  position: fixed;
+  bottom: 2em;
+
+  &:hover {
+    background-color: transparent;
+    border: 2px solid #10366e;
+  }
+`;
+
+
+export function TopSection(props) {
+  
+  useEffect(() => {
+   // console.log("HEY ", props.realMode);
+  }, [props])
+
+
   return (
     <TopSectionContainer>
-      <Logo>Earth & Moon</Logo>
-      <Slogan>Not as close as they seem</Slogan>
+       <Logo>Earth & Moon</Logo>
+      <Slogan>Are not as close as you think</Slogan>
+      {!props.realMode && <>
+     <DonateButton onClick={() => props.setRealMode(true)}> Check how far they really are </DonateButton>
+      
+      </>}
+      {props.realMode && <>
+        <DonateButton onClick={(prev)=> props.setRealMode(!prev)}> Go back </DonateButton>      
+      </>}
 
     </TopSectionContainer>
   );

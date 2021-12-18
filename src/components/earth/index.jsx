@@ -24,8 +24,8 @@ export function Earth(props) {
     earthRef.current.rotation.y = elapsedTime / 6;
     cloudsRef.current.rotation.y = elapsedTime / 6;
 
-// props.group.current.rotation.y += Math.PI / 500
-props.group.current.rotation.y += Math.PI / 1000
+ props.group.current.rotation.y += Math.PI / 500
+//props.group.current.rotation.y += 0.001;
 
   });
 

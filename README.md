@@ -1,6 +1,5 @@
 
 ### TODO
- - Añadir bloom
  - Añadir sombra luna
  - tidal lock
  - órbita realista de la luna

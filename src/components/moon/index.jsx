@@ -14,8 +14,11 @@ export function Moon(props) {
   const moonRef = useRef();
 
   useFrame(({ clock }) => {
-    const elapsedTime = clock.getElapsedTime();
-    moonRef.current.rotation.y = elapsedTime / 6;
+ //   const elapsedTime = clock.getElapsedTime();
+ //   moonRef.current.rotation.y = elapsedTime / 6;
+    //moonRef.current.rotation.y   -= Math.PI / 600
+
+
   });
 
   return (

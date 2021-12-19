@@ -26,7 +26,7 @@ export function Earth(props) {
     cloudsRef.current.rotation.y = elapsedTime / 1;
 
     if(!props.realMode) {
-      props.group.current.rotation.y += Math.PI / 2500
+      props.group.current.rotation.y += Math.PI / 500
     } else {
       props.group.current.rotation.y = Math.PI / 2500
     }
@@ -36,7 +36,7 @@ export function Earth(props) {
     gsap.to(camera.position, {
       duration: 0.7,
       x: props.realMode ? 39 : 0,
-      z: props.realMode ? 50 : 5,
+      z: props.realMode ? 120 : 5,
       ease: "Power3.inOut",
     })
     // }
@@ -46,7 +46,7 @@ export function Earth(props) {
 
   return (
     <>
-      <pointLight color="#fffcf5" position={[5, 0, 5]} intensity={2.2} castShadow shadow-mapSize={[512, 512]} />
+      <pointLight color="#fffcf5" position={[25, 0, 25]} intensity={2.2} castShadow shadow-mapSize={[512, 512]} />
 
       <Stars
         radius={300}
@@ -58,7 +58,7 @@ export function Earth(props) {
       />
 
       <mesh ref={cloudsRef} position={[0, 0, 0]}>
-        <sphereGeometry args={[1.005, 32, 32]} />
+        <sphereGeometry args={[1.0005, 32, 32]} />
         <meshPhongMaterial
           map={cloudsMap}
           opacity={0.9}

@@ -4,33 +4,34 @@ import styled from "styled-components";
 const TopSectionContainer = styled.div`
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 90%;
   top: 0;
   left: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 5%;
+  padding-top: 3%;
   z-index: 99;
 `;
 
 const Logo = styled.h1`
   margin: 0;
+  padding-top: 3%;
   color: #fff;
   font-weight: 800;
-  font-size: 80px;
+  font-size: 50px;
 `;
 
 const Slogan = styled.h4`
   margin: 0;
   color: #fff;
   font-weight: 700;
-  font-size: 30px;
-  margin-top: 10px;
+  font-size: 25px;
+  margin-top: 5px;
 `;
 
 
-const DonateButton = styled.button`
+const ActionButton = styled.button`
   outline: none;
   border: none;
   background-color: #10366e;
@@ -54,16 +55,16 @@ const DonateButton = styled.button`
 const GithubButton = styled.button`
   outline: none;
   border: none;
-  background-color: #10366e;
+  background-color: #000;
   color: #fff !important;
   border-radius: 30px;
-  padding: 1em 1em;
+  padding: 0.5em 0.5em;
   cursor: pointer;
   border: 2px solid transparent;
   transition: all 350ms ease-in-out;
   position: fixed;
-  top: 1em;
-  right: 1em;
+  top: 0.5em;
+  right: 0.5em;
 
   &:hover {
     background-color: transparent;
@@ -73,8 +74,6 @@ const GithubButton = styled.button`
 
 
 export function TopSection(props) {
-
-
 
   return (
     <TopSectionContainer>
@@ -88,11 +87,11 @@ export function TopSection(props) {
       </GithubButton>
 
       {!props.realMode && <>
-        <DonateButton onClick={() => props.setRealMode(true)}> Check how far they really are </DonateButton>
+        <ActionButton onClick={() => props.setRealMode(true)}> Check how far they really are </ActionButton>
       </>}
 
       {props.realMode && <>
-        <DonateButton onClick={(prev) => props.setRealMode(!prev)}> Go back </DonateButton>
+        <ActionButton onClick={(prev) => props.setRealMode(!prev)}> Go back </ActionButton>
       </>}
 
     </TopSectionContainer>

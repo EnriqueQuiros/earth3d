@@ -2,9 +2,11 @@
 ### TODO
  - tidal lock?
  - responsive
- - github link
  - typescript? -> https://docs.pmnd.rs/react-three-fiber/tutorials/typescript
  - sun + godrays?
+ - week light when in real mode
+ - PWA + landscape?
+ - deploy
 
 
 

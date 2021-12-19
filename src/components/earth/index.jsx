@@ -23,8 +23,8 @@ export function Earth(props) {
   useFrame(({ clock, camera }) => {
     const elapsedTime = clock.getElapsedTime();
 
-    earthRef.current.rotation.y = elapsedTime / 1;
-    cloudsRef.current.rotation.y = elapsedTime / 1;
+    earthRef.current.rotation.y = elapsedTime / 0.5;
+    cloudsRef.current.rotation.y = elapsedTime / 0.5;
 
     if (!props.realMode) {
       props.group.current.rotation.y += Math.PI / 500

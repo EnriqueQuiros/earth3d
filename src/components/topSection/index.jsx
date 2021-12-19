@@ -1,5 +1,4 @@
 import React from "react";
-import { useEffect } from "react/cjs/react.development";
 import styled from "styled-components";
 
 const TopSectionContainer = styled.div`
@@ -75,9 +74,6 @@ const GithubButton = styled.button`
 
 export function TopSection(props) {
 
-  useEffect(() => {
-    // console.log("HEY ", props.realMode);
-  }, [props])
 
 
   return (

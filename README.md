@@ -1,7 +1,6 @@
 
 ### TODO
  - tidal lock?
- - responsive
  - typescript? -> https://docs.pmnd.rs/react-three-fiber/tutorials/typescript
  - sun + godrays?
  - weak light when in real mode

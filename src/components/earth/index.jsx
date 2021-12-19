@@ -2,13 +2,14 @@ import React, { useRef } from "react";
 import { useFrame, useLoader } from "@react-three/fiber";
 import { Stars } from "@react-three/drei";
 import * as THREE from "three";
+import { TextureLoader } from "three";
+import gsap from "gsap";
 
 import EarthDayMap from "../../assets/textures/8k_earth_daymap.jpg";
 import EarthNormalMap from "../../assets/textures/8k_earth_normal_map.jpg";
 import EarthSpecularMap from "../../assets/textures/8k_earth_specular_map.jpg";
 import EarthCloudsMap from "../../assets/textures/8k_earth_clouds.png";
-import { TextureLoader } from "three";
-import gsap from "gsap";
+
 
 export function Earth(props) {
   const [colorMap, normalMap, specularMap, cloudsMap] = useLoader(
@@ -25,28 +26,32 @@ export function Earth(props) {
     earthRef.current.rotation.y = elapsedTime / 1;
     cloudsRef.current.rotation.y = elapsedTime / 1;
 
-    if(!props.realMode) {
+    if (!props.realMode) {
       props.group.current.rotation.y += Math.PI / 500
     } else {
       props.group.current.rotation.y = Math.PI / 2500
     }
 
-
     //  if(!gsap.isTweening(camera.position)) {
     gsap.to(camera.position, {
       duration: 0.7,
       x: props.realMode ? 39 : 0,
-      z: props.realMode ? 120 : 5,
+      z: props.realMode ? 120 : 7,
       ease: "Power3.inOut",
     })
     // }
-
 
   });
 
   return (
     <>
-      <pointLight color="#fffcf5" position={[25, 0, 25]} intensity={2.2} castShadow shadow-mapSize={[512, 512]} />
+      {!props.realMode &&
+        <pointLight color="#fffcf5" position={[15, 0, 15]} intensity={2.2} castShadow shadow-mapSize={[512, 512]} />
+      }
+
+      {props.realMode &&
+        <pointLight color="#fffcf5" position={[115, 0, 115]} intensity={7} castShadow shadow-mapSize={[512, 512]} />
+      }
 
       <Stars
         radius={300}
@@ -76,10 +81,9 @@ export function Earth(props) {
           normalMap={normalMap}
           metalness={0.4}
           roughness={0.7}
-          bumpScale={1}
         />
 
-      {/* 
+        {/* 
       <OrbitControls
           enableZoom={true}
           enablePan={true}

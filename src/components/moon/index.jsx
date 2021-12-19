@@ -10,28 +10,19 @@ export function Moon(props) {
     [MoonDayMap, MoonNormalMap]
   );
 
-
-
-
   const moonRef = useRef();
 
   useFrame(({ clock }) => {
- //   const elapsedTime = clock.getElapsedTime();
- //   moonRef.current.rotation.y = elapsedTime / 6;
+    //   const elapsedTime = clock.getElapsedTime();
+    //   moonRef.current.rotation.y = elapsedTime / 6;
     //moonRef.current.rotation.y   -= Math.PI / 600
   });
 
-
   useEffect(() => {
     // console.log("HEY ", props.realMode);
-
     //setDistance(props.realMode ? 3 : 3)
-
     moonRef.current.position.x = props.realMode ? 80 : 3;
-
-   }, [props])
- 
- 
+  }, [props])
 
 
   return (

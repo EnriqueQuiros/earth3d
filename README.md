@@ -3,9 +3,7 @@
  - tidal lock?
  - typescript? -> https://docs.pmnd.rs/react-three-fiber/tutorials/typescript
  - sun + godrays?
- - weak light when in real mode
  - PWA + landscape?
- - deploy
 
 
 

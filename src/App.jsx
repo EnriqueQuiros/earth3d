@@ -6,10 +6,9 @@ import { Suspense } from "react";
 import { Earth } from "./components/earth";
 import { TopSection } from "./components/topSection";
 import { Moon } from "./components/moon";
-import { EffectComposer, Bloom, Noise, Vignette, SMAA, Sepia, Scanline, DotScreen  } from '@react-three/postprocessing'
+import { EffectComposer, Bloom, Vignette  } from '@react-three/postprocessing'
 import { KernelSize } from 'postprocessing'
-import { BlendFunction } from 'postprocessing'
-
+ 
 
 const CanvasContainer = styled.div`
   width: 100%;

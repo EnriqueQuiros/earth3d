@@ -6,8 +6,9 @@ import { Suspense } from "react";
 import { Earth } from "./components/earth";
 import { TopSection } from "./components/topSection";
 import { Moon } from "./components/moon";
-import { EffectComposer, Bloom } from '@react-three/postprocessing'
+import { EffectComposer, Bloom, Noise, Vignette, SMAA, Sepia, Scanline, DotScreen  } from '@react-three/postprocessing'
 import { KernelSize } from 'postprocessing'
+import { BlendFunction } from 'postprocessing'
 
 
 const CanvasContainer = styled.div`
@@ -16,29 +17,37 @@ const CanvasContainer = styled.div`
 `;
 
 function App() {
-
-
   const [realMode, setRealMode] = useState(false);
-
-
-
   const group = useRef()
 
   return (
     <CanvasContainer>
       <TopSection realMode={realMode} setRealMode={setRealMode} />
 
-
       <Canvas shadows>
         <Suspense fallback={null}>
 
-          <Earth group={group}  realMode={realMode}/>
+          <Earth group={group} realMode={realMode} />
           <group ref={group}>
             <Moon realMode={realMode} />
           </group>
 
           <EffectComposer multisampling={8}>
-            <Bloom kernelSize={KernelSize.LARGE} luminanceThreshold={0.3} luminanceSmoothing={0.5} intensity={0.3} />
+            
+            <Bloom 
+              kernelSize={KernelSize.LARGE} 
+              luminanceThreshold={0.5} 
+              luminanceSmoothing={0.5} 
+              intensity={1} 
+              />
+ 
+ 
+        <Vignette eskil={false} offset={0.1} darkness={1.1} />
+  
+  
+
+
+
           </EffectComposer>
 
         </Suspense>

@@ -25,16 +25,21 @@ export function Earth(props) {
     earthRef.current.rotation.y = elapsedTime / 1;
     cloudsRef.current.rotation.y = elapsedTime / 1;
 
-    props.group.current.rotation.y += Math.PI / 2500
+    if(!props.realMode) {
+      props.group.current.rotation.y += Math.PI / 2500
+    } else {
+      props.group.current.rotation.y = Math.PI / 2500
+    }
 
 
-  //  if(!gsap.isTweening(camera.position)) {
-      gsap.to(camera.position, {
-        duration: 0.7,
-        z: props.realMode ? 50: 5,
-        ease: "Power3.inOut",
-      })
-   // }
+    //  if(!gsap.isTweening(camera.position)) {
+    gsap.to(camera.position, {
+      duration: 0.7,
+      x: props.realMode ? 39 : 0,
+      z: props.realMode ? 50 : 5,
+      ease: "Power3.inOut",
+    })
+    // }
 
 
   });
@@ -63,7 +68,6 @@ export function Earth(props) {
         />
       </mesh>
 
-
       <mesh ref={earthRef} position={[0, 0, 0]} castShadow receiveShadow>
         <sphereGeometry args={[1, 32, 32]} />
         <meshPhongMaterial specularMap={specularMap} />
@@ -75,8 +79,7 @@ export function Earth(props) {
           bumpScale={1}
         />
 
-
- {/* 
+      {/* 
       <OrbitControls
           enableZoom={true}
           enablePan={true}
@@ -85,8 +88,7 @@ export function Earth(props) {
           panSpeed={0.5}
           rotateSpeed={0.4}
         /> 
- */}       
-
+     */}
 
       </mesh>
     </>

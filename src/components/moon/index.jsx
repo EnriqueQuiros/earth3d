@@ -27,7 +27,7 @@ export function Moon(props) {
 
     //setDistance(props.realMode ? 3 : 3)
 
-    moonRef.current.position.x = props.realMode ? 30 : 3;
+    moonRef.current.position.x = props.realMode ? 80 : 3;
 
    }, [props])
  

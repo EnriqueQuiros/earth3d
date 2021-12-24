@@ -1,5 +1,5 @@
-import React, { useRef, useEffect } from "react";
-import { useFrame, useLoader } from "@react-three/fiber";
+import { useRef, useEffect } from "react";
+import { useLoader } from "@react-three/fiber";
 import MoonDayMap from "../../assets/textures/moonmap4k.jpg";
 import MoonNormalMap from "../../assets/textures/moonbump4k.jpg";
 import { TextureLoader } from "three";
@@ -12,15 +12,7 @@ export function Moon(props) {
 
   const moonRef = useRef();
 
-  useFrame(({ clock }) => {
-    //   const elapsedTime = clock.getElapsedTime();
-    //   moonRef.current.rotation.y = elapsedTime / 6;
-    //moonRef.current.rotation.y   -= Math.PI / 600
-  });
-
   useEffect(() => {
-    // console.log("HEY ", props.realMode);
-    //setDistance(props.realMode ? 3 : 3)
     moonRef.current.position.x = props.realMode ? 80 : 3;
   }, [props])
 

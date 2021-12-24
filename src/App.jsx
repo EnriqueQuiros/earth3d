@@ -1,12 +1,10 @@
-import React, { useRef, useState } from 'react'
-import "./App.css";
+import { useRef, useState } from 'react'
 import styled from "styled-components";
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import { Earth } from "./components/earth";
 import { TopSection } from "./components/topSection";
 import { Moon } from "./components/moon";
-//import { EffectComposer, Bloom, Vignette } from '@react-three/postprocessing'
 
 const CanvasContainer = styled.div`
   width: 100%;
@@ -28,18 +26,6 @@ function App() {
           <group ref={group}>
             <Moon realMode={realMode} />
           </group>
-
-          {/* 
-          <EffectComposer multisampling={8}>
-            <Bloom 
-              kernelSize={KernelSize.LARGE} 
-              luminanceThreshold={0.5} 
-              luminanceSmoothing={0.5} 
-              intensity={1} 
-              />
-            <Vignette eskil={false} offset={0.1} darkness={1.1} />
-          </EffectComposer>
-            */}
 
         </Suspense>
       </Canvas>

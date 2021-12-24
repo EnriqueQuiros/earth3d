@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { useFrame, useLoader } from "@react-three/fiber";
 import { Stars } from "@react-three/drei";
 import * as THREE from "three";
@@ -9,7 +9,6 @@ import EarthDayMap from "../../assets/textures/8k_earth_daymap.jpg";
 import EarthNormalMap from "../../assets/textures/8k_earth_normal_map.jpg";
 import EarthSpecularMap from "../../assets/textures/8k_earth_specular_map.jpg";
 import EarthCloudsMap from "../../assets/textures/8k_earth_clouds.png";
-
 
 export function Earth(props) {
   const [colorMap, normalMap, specularMap, cloudsMap] = useLoader(
@@ -32,35 +31,35 @@ export function Earth(props) {
       props.group.current.rotation.y = Math.PI / 2500
     }
 
-    //  if(!gsap.isTweening(camera.position)) {
     gsap.to(camera.position, {
       duration: 0.7,
       x: props.realMode ? 39 : 0,
       z: props.realMode ? 120 : 7,
       ease: "Power3.inOut",
     })
-    // }
 
   });
 
   return (
     <>
       {!props.realMode &&
-        <pointLight color="#fffcf5" position={[15, 0, 15]} intensity={2.2} castShadow shadow-mapSize={[512, 512]} />
+        <>
+          <pointLight color="#fffcf5" position={[15, 0, 15]} intensity={2.2} castShadow shadow-mapSize={[512, 512]} />
+
+          <Stars
+            radius={300}
+            depth={60}
+            count={3000}
+            factor={5}
+            saturation={0}
+            fade={true}
+          />
+        </>
       }
 
       {props.realMode &&
         <pointLight color="#fffcf5" position={[115, 0, 115]} intensity={7} castShadow shadow-mapSize={[512, 512]} />
       }
-
-      <Stars
-        radius={300}
-        depth={60}
-        count={3000}
-        factor={5}
-        saturation={0}
-        fade={true}
-      />
 
       <mesh ref={cloudsRef} position={[0, 0, 0]}>
         <sphereGeometry args={[1.0005, 32, 32]} />
@@ -82,17 +81,6 @@ export function Earth(props) {
           metalness={0.4}
           roughness={0.7}
         />
-
-        {/* 
-      <OrbitControls
-          enableZoom={true}
-          enablePan={true}
-          enableRotate={true}
-          zoomSpeed={0.6}
-          panSpeed={0.5}
-          rotateSpeed={0.4}
-        /> 
-     */}
 
       </mesh>
     </>

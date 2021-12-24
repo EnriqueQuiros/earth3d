@@ -1,17 +1,13 @@
+# Earth Moon distance
 
-### TODO
- - tidal lock?
- - typescript? -> https://docs.pmnd.rs/react-three-fiber/tutorials/typescript
- - sun + godrays?
- - PWA + landscape?
+### Small educational web app
 
+Made with React, React three fiber, React three drei, gsap...
 
 
 
 
 
-
-# Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
